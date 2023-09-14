@@ -21,7 +21,7 @@ class MainDescription extends StatelessWidget {
             ),
             Text(
               "Descripción a Futuro",
-              style: TextStyle(fontSize: 21, height: 1.7),
+              style: TextStyle(fontSize: 18, height: 1.7),
             )
           ]),
     );

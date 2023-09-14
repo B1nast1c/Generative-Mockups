@@ -6,5 +6,6 @@ class AppColors {
   static const Color normalSalmon = Color(0xFFED7966);
   static const Color normalBlue = Color(0xFF303179);
   static const Color darkBlue = Color(0xFF141850);
-  static const Color normalWhite = Color.fromARGB(241, 255, 255, 255);
+  static const Color normalWhite = Color(0xFFFBFBFB);
+  static const Color letterColor = Color(0xFF303841);
 }

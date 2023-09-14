@@ -5,14 +5,17 @@ class CustomNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
-      height: 100,
+    return SizedBox(
+      height: 150,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          //Diseño del Logo pegar código: child: Image.asset(ubicacion)
-          SizedBox(height: 80, width: 150),
-          Row(
+          SizedBox(
+            height: 150,
+            width: 220,
+            child: Image.asset('assets/logo.png'),
+          ),
+          const Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               BarItem(title: "Home"),
@@ -34,7 +37,7 @@ class BarItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       title,
-      style: const TextStyle(fontSize: 18),
+      style: const TextStyle(fontSize: 16),
     );
   }
 }
