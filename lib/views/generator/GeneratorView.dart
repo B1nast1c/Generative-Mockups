@@ -24,11 +24,11 @@ class GeneratorView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  "INGRESA UNA \nDESCRIPCIÓN DETALLADA",
+                  "ESCRIBE ALGO GENIAL",
                   style: TextStyle(
                       fontWeight: FontWeight.w800,
                       height: 0.925,
-                      fontSize: 57,
+                      fontSize: 55,
                       color: AppColors.letterColor),
                 ),
                 SizedBox(

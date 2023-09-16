@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:interfaces/common/colors.dart';
+import 'package:interfaces/views/loader/LoadingView.dart';
 
 class GenerateButton extends StatelessWidget {
   final String title;
@@ -7,19 +8,30 @@ class GenerateButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 15),
-        decoration: BoxDecoration(
-            color: AppColors.normalPink,
-            borderRadius: BorderRadius.circular(5)),
-        child: Text(
-          title,
-          style: const TextStyle(
-              fontSize: 17,
-              fontWeight: FontWeight.w600,
-              color: AppColors.normalBlue),
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => LoadingView(
+            signalFunction: () {
+              //print("Señal enviada desde la página de carga.");
+            },
+          ),
+        ));
+      },
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 15),
+          decoration: BoxDecoration(
+              color: AppColors.normalSalmon,
+              borderRadius: BorderRadius.circular(5)),
+          child: Text(
+            title,
+            style: const TextStyle(
+                fontSize: 17,
+                fontWeight: FontWeight.w600,
+                color: AppColors.letterColor), //Hover a las letras blancas
+          ),
         ),
       ),
     );
