@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:interfaces/common/colors.dart';
+import 'package:interfaces/widgets/buttons/MainButton.dart';
 
 class MainDescription extends StatelessWidget {
   const MainDescription({super.key});
@@ -12,17 +14,25 @@ class MainDescription extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              "MOCKUPS \nGENERATOR",
+              "GENERADOR DE \nMOCKUPS",
               style: TextStyle(
-                  fontWeight: FontWeight.w800, height: 0.9, fontSize: 80),
+                  fontWeight: FontWeight.w800,
+                  height: 0.9,
+                  fontSize: 80,
+                  color: AppColors.letterColor),
             ),
             SizedBox(
-              height: 30,
+              height: 25,
             ),
             Text(
-              "Descripción a Futuro",
-              style: TextStyle(fontSize: 18, height: 1.7),
-            )
+              "Transforma tus conceptos en diseños asombrosos: nuestra página web genera mockups en base a tus ideas y palabras",
+              style: TextStyle(
+                  fontSize: 15, height: 1.5, color: AppColors.letterColor),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            MainButton(title: 'EMPEZAR')
           ]),
     );
   }
