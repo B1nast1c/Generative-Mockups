@@ -45,8 +45,10 @@ class _LoadingViewState extends State<LoadingView> {
       widget.signalFunction();
       setState(() {
         redirectView = true;
-        Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => const ResultsView()));
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (context) => const ResultsView(
+                  viewTitle: 'Tiendas Virtuales',
+                )));
       });
     });
   }

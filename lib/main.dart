@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           textTheme:
               Theme.of(context).textTheme.apply(fontFamily: 'Open Sans')),
-      home: const ResultsView(),
+      home: const ResultsView(viewTitle: 'Tiendas Virtuales'),
     );
   }
 }
