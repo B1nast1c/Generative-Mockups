@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:interfaces/common/colors.dart';
 import 'package:interfaces/views/main/CenterView.dart';
 import 'package:interfaces/widgets/bar/navigation/NavigationBar.dart';
+import 'package:interfaces/widgets/bar/search/GeneratorBar.dart';
+import 'package:interfaces/widgets/buttons/GenerateButton.dart';
 
 class GeneratorView extends StatelessWidget {
   const GeneratorView({super.key});
@@ -14,8 +16,31 @@ class GeneratorView extends StatelessWidget {
           child: Column(
         children: <Widget>[
           CustomNavigationBar(active: 2),
+          Divider(
+            color: AppColors.lightPink,
+          ),
           Expanded(
-            child: Placeholder(),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  "INGRESA UNA \nDESCRIPCIÓN DETALLADA",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w800,
+                      height: 0.925,
+                      fontSize: 57,
+                      color: AppColors.letterColor),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                GeneratorBar(),
+                SizedBox(
+                  height: 25,
+                ),
+                GenerateButton(title: 'CREAR INTERFAZ')
+              ],
+            ),
           )
         ],
       )),

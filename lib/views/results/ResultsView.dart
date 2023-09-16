@@ -14,6 +14,9 @@ class ResultsView extends StatelessWidget {
           child: Column(
         children: <Widget>[
           CustomNavigationBar(active: 2),
+          Divider(
+            color: AppColors.lightPink,
+          ),
           Expanded(
             child: Placeholder(),
           )

@@ -15,6 +15,9 @@ class MainView extends StatelessWidget {
           child: Column(
         children: <Widget>[
           const CustomNavigationBar(active: 1),
+          const Divider(
+            color: AppColors.lightPink,
+          ),
           Expanded(
               child: Row(
             children: <Widget>[

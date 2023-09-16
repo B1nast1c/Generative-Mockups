@@ -35,7 +35,7 @@ class CustomNavigationBar extends StatelessWidget {
               const SizedBox(width: 25),
               BarItem(title: "Generar", active: active, current: 2)
             ],
-          )
+          ),
         ],
       ),
     );
