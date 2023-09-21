@@ -1,10 +1,7 @@
-// ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
 import 'package:interfaces/common/colors.dart';
-import 'package:interfaces/views/main/LeftView.dart';
-import 'package:interfaces/widgets/buttons/DownloadButton.dart';
-import 'package:interfaces/widgets/buttons/ShareButton.dart';
+import 'package:interfaces/widgets/buttons/download_button.dart';
+import 'package:interfaces/widgets/buttons/share_button.dart';
 
 class GeneratorResults extends StatelessWidget {
   const GeneratorResults({super.key});

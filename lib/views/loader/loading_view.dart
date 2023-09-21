@@ -1,9 +1,7 @@
-// ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
 import 'package:interfaces/common/colors.dart';
-import 'package:interfaces/views/main/CenterView.dart';
-import 'package:interfaces/views/results/ResultsView.dart';
+import 'package:interfaces/views/main/center_view.dart';
+import 'package:interfaces/views/results/results_view.dart';
 
 class LoadingView extends StatefulWidget {
   final Function signalFunction;

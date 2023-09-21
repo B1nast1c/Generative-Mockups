@@ -1,25 +1,27 @@
-// ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
 import 'package:interfaces/common/colors.dart';
-import 'package:interfaces/views/generator/GeneratorView.dart';
+import 'package:interfaces/views/loader/loading_view.dart';
 
-class MainButton extends StatelessWidget {
+class GenerateButton extends StatelessWidget {
   final String title;
-  const MainButton({super.key, required this.title});
+  const GenerateButton({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => const GeneratorView(),
+          builder: (context) => LoadingView(
+            signalFunction: () {
+              //print("Señal enviada desde la página de carga.");
+            },
+          ),
         ));
       },
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 55, vertical: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 15),
           decoration: BoxDecoration(
               color: AppColors.normalSalmon,
               borderRadius: BorderRadius.circular(5)),
@@ -28,7 +30,7 @@ class MainButton extends StatelessWidget {
             style: const TextStyle(
                 fontSize: 17,
                 fontWeight: FontWeight.w600,
-                color: AppColors.normalWhite),
+                color: AppColors.letterColor), //Hover a las letras blancas
           ),
         ),
       ),

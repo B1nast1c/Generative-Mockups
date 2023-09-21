@@ -1,8 +1,6 @@
-// ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
 import 'package:interfaces/common/colors.dart';
-import 'package:interfaces/widgets/buttons/MainButton.dart';
+import 'package:interfaces/widgets/buttons/main_button.dart';
 
 class MainDescription extends StatelessWidget {
   const MainDescription({super.key});

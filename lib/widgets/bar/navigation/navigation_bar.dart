@@ -1,9 +1,7 @@
-// ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
 import 'package:interfaces/common/colors.dart';
-import 'package:interfaces/views/generator/GeneratorView.dart';
-import 'package:interfaces/views/main/MainView.dart';
+import 'package:interfaces/views/generator/generator_view.dart';
+import 'package:interfaces/views/main/main_view.dart';
 
 class CustomNavigationBar extends StatelessWidget {
   final int active;

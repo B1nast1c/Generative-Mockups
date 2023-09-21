@@ -1,11 +1,9 @@
-// ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
 import 'package:interfaces/common/colors.dart';
-import 'package:interfaces/views/main/CenterView.dart';
-import 'package:interfaces/widgets/bar/navigation/NavigationBar.dart';
-import 'package:interfaces/widgets/bar/search/GeneratorBar.dart';
-import 'package:interfaces/widgets/buttons/GenerateButton.dart';
+import 'package:interfaces/views/main/center_view.dart';
+import 'package:interfaces/widgets/bar/navigation/navigation_bar.dart';
+import 'package:interfaces/widgets/bar/search/generator_bar.dart';
+import 'package:interfaces/widgets/buttons/generate_button.dart';
 
 class GeneratorView extends StatelessWidget {
   const GeneratorView({super.key});

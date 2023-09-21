@@ -1,11 +1,9 @@
-// ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
 import 'package:interfaces/common/colors.dart';
-import 'package:interfaces/views/main/LeftView.dart';
-import 'package:interfaces/widgets/bar/navigation/NavigationBar.dart';
-import 'package:interfaces/widgets/information/ResultsPrompt.dart';
-import 'package:interfaces/widgets/results/GeneratorResults.dart';
+import 'package:interfaces/views/main/left_view.dart';
+import 'package:interfaces/widgets/bar/navigation/navigation_bar.dart';
+import 'package:interfaces/widgets/information/results_prompt.dart';
+import 'package:interfaces/widgets/results/generator_results.dart';
 
 class ResultsView extends StatelessWidget {
   final String viewTitle;
