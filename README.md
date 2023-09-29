@@ -1,1 +1,1 @@
-I hope God helps me :)
+Interfaz gráfica
