@@ -5,15 +5,18 @@ import 'package:interfaces/widgets/bar/navigation/navigation_bar.dart';
 import 'package:interfaces/widgets/information/main_description.dart';
 
 class MainView extends StatelessWidget {
-  const MainView({super.key});
+  const MainView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // Validación de recursos
+
     return Scaffold(
       backgroundColor: AppColors.normalWhite,
       body: CenterView(
           child: Column(
         children: <Widget>[
+          // Validación de contenido estático
           const CustomNavigationBar(active: 1),
           const Divider(
             color: AppColors.lightPink,
@@ -21,9 +24,11 @@ class MainView extends StatelessWidget {
           Expanded(
               child: Row(
             children: <Widget>[
+              // Validación de contenido estático
               const MainDescription(),
               Expanded(
                   child: Center(
+                // Validación de contenido estático
                 child: Image.asset('assets/mainImage.png'),
               ))
             ],

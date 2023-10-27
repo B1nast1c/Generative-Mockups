@@ -14,7 +14,7 @@ class ResultsPrompt extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              "Estos son los resultados generados para:",
+              "These are the results: ",
               style: TextStyle(
                 fontSize: 15,
                 height: 1.5,

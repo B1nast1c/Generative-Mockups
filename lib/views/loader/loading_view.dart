@@ -5,14 +5,14 @@ import 'package:interfaces/views/results/results_view.dart';
 
 class LoadingView extends StatefulWidget {
   final Function signalFunction;
-  const LoadingView({super.key, required this.signalFunction});
+  const LoadingView({Key? key, required this.signalFunction}) : super(key: key);
 
   @override
   State<LoadingView> createState() => _LoadingViewState();
 }
 
 class _LoadingViewState extends State<LoadingView> {
-  String loadText = 'Generando Interfaces';
+  String loadText = 'Generating Layouts';
   bool redirectView = false;
 
   void loadingText() {
@@ -26,7 +26,7 @@ class _LoadingViewState extends State<LoadingView> {
             loadText += '.';
             dotCount++;
           } else {
-            loadText = 'Generando Interfaces';
+            loadText = 'Generating Layouts';
             dotCount = 0;
           }
         });
@@ -40,14 +40,22 @@ class _LoadingViewState extends State<LoadingView> {
     super.initState();
     loadingText();
     Future.delayed(const Duration(seconds: 3), () {
-      widget.signalFunction();
-      setState(() {
-        redirectView = true;
-        Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (context) => const ResultsView(
-                  viewTitle: 'Tiendas Virtuales',
-                )));
-      });
+      try {
+        widget.signalFunction();
+        setState(() {
+          redirectView = true;
+          Navigator.of(context).pushReplacement(MaterialPageRoute(
+              builder: (context) => const ResultsView(
+                    viewTitle:
+                        'Modificar', //Pasado por la API (Elemento que se ha generado)
+                  )));
+        });
+      } catch (e) {
+        // Manejo de excepciones: muestra un mensaje de error en caso de problemas
+        setState(() {
+          loadText = 'Error: ${e.toString()}';
+        });
+      }
     });
   }
 

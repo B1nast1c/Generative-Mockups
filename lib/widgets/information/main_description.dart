@@ -14,7 +14,7 @@ class MainDescription extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              "GENERADOR DE \nMOCKUPS",
+              "LAYOUT \nGENERATOR",
               style: TextStyle(
                   fontWeight: FontWeight.w800,
                   height: 0.9,
@@ -25,14 +25,14 @@ class MainDescription extends StatelessWidget {
               height: 25,
             ),
             Text(
-              "Transforma tus conceptos en diseños asombrosos: nuestra página web genera mockups en base a tus ideas y palabras",
+              "Piensa en una frase mejor XD",
               style: TextStyle(
                   fontSize: 15, height: 1.5, color: AppColors.letterColor),
             ),
             SizedBox(
               height: 20,
             ),
-            MainButton(title: 'EMPEZAR')
+            MainButton(title: "LET'S START")
           ]),
     );
   }

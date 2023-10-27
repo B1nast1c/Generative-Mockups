@@ -89,7 +89,7 @@ showInfo(context, title, id) {
                                 height: 40,
                               ),
                               Text(
-                                'Interfaz nº $id',
+                                'Layout nº $id',
                                 style: const TextStyle(
                                     fontWeight: FontWeight.w800,
                                     height: 0.9,
@@ -116,7 +116,7 @@ showInfo(context, title, id) {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: <Widget>[
-                                          Text('Título de la interfaz: $title',
+                                          Text('Layout code: $title',
                                               style: const TextStyle(
                                                   height: 2.5,
                                                   fontSize: 25,
@@ -134,10 +134,9 @@ showInfo(context, title, id) {
                                           CrossAxisAlignment.start,
                                       children: <Widget>[
                                         DownloadButton(
-                                            title: 'Descargar Imagen'),
+                                            title: 'Download layout'),
                                         SizedBox(height: 15),
-                                        ShareButton(
-                                            title: 'Compartir Contenido')
+                                        ShareButton(title: 'Share layout')
                                       ],
                                     ),
                                   )

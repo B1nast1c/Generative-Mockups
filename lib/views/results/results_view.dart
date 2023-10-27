@@ -7,32 +7,43 @@ import 'package:interfaces/widgets/results/generator_results.dart';
 
 class ResultsView extends StatelessWidget {
   final String viewTitle;
-  const ResultsView({super.key, required this.viewTitle});
+  const ResultsView({Key? key, required this.viewTitle}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.normalWhite,
-      body: LeftView(
+    try {
+      return Scaffold(
+        backgroundColor: AppColors.normalWhite,
+        body: LeftView(
           child: Column(
-        children: <Widget>[
-          const CustomNavigationBar(active: 2),
-          const Divider(
-            color: AppColors.lightPink,
+            children: <Widget>[
+              const CustomNavigationBar(active: 2),
+              const Divider(
+                color: AppColors.lightPink,
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 35),
+                  child: Row(
+                    children: <Widget>[
+                      ResultsPrompt(inputText: viewTitle),
+                      const SizedBox(width: 100),
+                      const GeneratorResults()
+                    ],
+                  ),
+                ),
+              )
+            ],
           ),
-          Expanded(
-            child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 35),
-                child: Row(
-                  children: <Widget>[
-                    ResultsPrompt(inputText: viewTitle),
-                    const SizedBox(width: 100),
-                    const GeneratorResults()
-                  ],
-                )),
-          )
-        ],
-      )),
-    );
+        ),
+      );
+    } catch (e) {
+      // Manejo de excepciones: muestra un mensaje de error en caso de problemas
+      return Scaffold(
+        body: Center(
+          child: Text('Error: ${e.toString()}'),
+        ),
+      );
+    }
   }
 }
