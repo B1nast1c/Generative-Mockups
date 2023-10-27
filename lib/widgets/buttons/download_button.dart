@@ -9,7 +9,7 @@ class DownloadButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print('Descargar XD');
+        // print('Descargar XD');
       },
       child: MouseRegion(
         cursor: SystemMouseCursors.click,

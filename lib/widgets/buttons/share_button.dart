@@ -9,7 +9,7 @@ class ShareButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print('Compartir XD');
+        // print('Compartir XD');
       },
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
