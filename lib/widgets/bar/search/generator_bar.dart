@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:interfaces/common/api_service.dart';
 import 'package:interfaces/common/colors.dart';
@@ -15,6 +17,7 @@ class GeneratorBarState extends State<GeneratorBar> {
   String item = "";
 
   int getLabels() {
+    log(labelList.length as String);
     return labelList.length;
   }
 
