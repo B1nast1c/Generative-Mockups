@@ -9,6 +9,7 @@ class MainButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      key: const Key('btnStart'),
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => const GeneratorView(),
