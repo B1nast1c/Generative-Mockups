@@ -7,7 +7,7 @@ import 'package:interfaces/widgets/results/generator_results.dart';
 
 class ResultsView extends StatelessWidget {
   final String viewTitle;
-  const ResultsView({Key? key, required this.viewTitle}) : super(key: key);
+  const ResultsView({super.key, required this.viewTitle});
 
   @override
   Widget build(BuildContext context) {

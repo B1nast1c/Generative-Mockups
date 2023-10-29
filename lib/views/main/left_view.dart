@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class LeftView extends StatelessWidget {
   final Widget child;
 
-  const LeftView({Key? key, required this.child}) : super(key: key);
+  const LeftView({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:interfaces/common/colors.dart';
 import 'package:interfaces/views/loader/loading_view.dart';
@@ -13,7 +15,7 @@ class GenerateButton extends StatelessWidget {
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => LoadingView(
             signalFunction: () {
-              //print("Señal enviada desde la página de carga.");
+              log("Señal enviada desde la página de carga.");
             },
           ),
         ));

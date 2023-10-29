@@ -5,7 +5,7 @@ import 'package:interfaces/widgets/bar/navigation/navigation_bar.dart';
 import 'package:interfaces/widgets/information/main_description.dart';
 
 class MainView extends StatelessWidget {
-  const MainView({Key? key}) : super(key: key);
+  const MainView({super.key});
 
   @override
   Widget build(BuildContext context) {

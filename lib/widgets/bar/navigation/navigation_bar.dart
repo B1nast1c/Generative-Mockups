@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:interfaces/common/colors.dart';
 import 'package:interfaces/views/generator/generator_view.dart';
@@ -5,7 +6,7 @@ import 'package:interfaces/views/main/main_view.dart';
 
 class CustomNavigationBar extends StatelessWidget {
   final int active;
-  const CustomNavigationBar({Key? key, required this.active}) : super(key: key);
+  const CustomNavigationBar({super.key, required this.active});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class CustomNavigationBar extends StatelessWidget {
                   ));
                 } catch (e) {
                   // Manejo de excepciones: muestra un mensaje de error en caso de problemas
-                  // print('Error en onTap de MainView: ${e.toString()}');
+                  log('Error en onTap de MainView: ${e.toString()}');
                 }
               },
               child: MouseRegion(
@@ -47,7 +48,7 @@ class CustomNavigationBar extends StatelessWidget {
       );
     } catch (e) {
       // Manejo de excepciones: muestra un mensaje de error en caso de problemas
-      // print('Error en CustomNavigationBar: ${e.toString()}');
+      log('Error en CustomNavigationBar: ${e.toString()}');
       return const SizedBox.shrink();
     }
   }
@@ -58,11 +59,11 @@ class BarItem extends StatelessWidget {
   final int active;
   final int current;
   const BarItem({
-    Key? key,
+    super.key,
     required this.title,
     required this.active,
     required this.current,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +78,7 @@ class BarItem extends StatelessWidget {
             ));
           } catch (e) {
             // Manejo de excepciones: muestra un mensaje de error en caso de problemas
-            // print('Error en onTap de BarItem: ${e.toString()}');
+            log('Error en onTap de BarItem: ${e.toString()}');
           }
         },
         child: MouseRegion(
@@ -101,7 +102,7 @@ class BarItem extends StatelessWidget {
       );
     } catch (e) {
       // Manejo de excepciones: muestra un mensaje de error en caso de problemas
-      // print('Error en BarItem: ${e.toString()}');
+      // log('Error en BarItem: ${e.toString()}');
       return const SizedBox
           .shrink(); // O cualquier otro comportamiento deseado en caso de error
     }

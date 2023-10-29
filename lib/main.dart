@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:interfaces/views/main/main_view.dart';
+import 'package:interfaces/views/generator/generator_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           textTheme:
               Theme.of(context).textTheme.apply(fontFamily: 'Open Sans')),
-      home: const MainView(),
+      home: const GeneratorView(),
     );
   }
 }

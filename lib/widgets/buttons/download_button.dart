@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:interfaces/common/colors.dart';
 
@@ -9,7 +10,7 @@ class DownloadButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // print('Descargar XD');
+        log('Descargar XD');
       },
       child: MouseRegion(
         cursor: SystemMouseCursors.click,

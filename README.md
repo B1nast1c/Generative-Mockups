@@ -5,5 +5,5 @@ Ujum...
 TODO:
 * Pruebas de interfaz
 * Enlace API-UI
-    Jalar los elementos de las categorias para mostrarlos en la droplist
-* Interfaz "responsive"
+* Interfaz "responsive" (DETALLES MENORES)
+* Adaptar pruebas para que usen una API ->PRIORIDAD

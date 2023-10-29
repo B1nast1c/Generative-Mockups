@@ -6,7 +6,7 @@ import 'package:interfaces/widgets/bar/search/generator_bar.dart';
 import 'package:interfaces/widgets/buttons/generate_button.dart';
 
 class GeneratorView extends StatelessWidget {
-  const GeneratorView({Key? key}) : super(key: key);
+  const GeneratorView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class GeneratorView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      "WHAT DO YOU WANT?",
+                      "WHICH LAYOUT DO YOU WANT?",
                       style: TextStyle(
                         fontWeight: FontWeight.w800,
                         height: 0.925,
@@ -34,9 +34,11 @@ class GeneratorView extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 15,
+                      height: 25,
                     ),
-                    GeneratorBar(),
+                    SingleChildScrollView(
+                      child: GeneratorBar(),
+                    ),
                     SizedBox(
                       height: 25,
                     ),

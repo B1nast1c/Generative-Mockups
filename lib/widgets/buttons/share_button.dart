@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:interfaces/common/colors.dart';
 
@@ -9,7 +11,7 @@ class ShareButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // print('Compartir XD');
+        log('Compartir XD');
       },
       child: MouseRegion(
         cursor: SystemMouseCursors.click,

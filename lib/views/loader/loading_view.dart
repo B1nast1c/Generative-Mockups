@@ -5,7 +5,7 @@ import 'package:interfaces/views/results/results_view.dart';
 
 class LoadingView extends StatefulWidget {
   final Function signalFunction;
-  const LoadingView({Key? key, required this.signalFunction}) : super(key: key);
+  const LoadingView({super.key, required this.signalFunction});
 
   @override
   State<LoadingView> createState() => _LoadingViewState();
