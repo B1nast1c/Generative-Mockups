@@ -14,9 +14,9 @@ class ResultsPrompt extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              "These are the results: ",
+              "These are the results for the following category: ",
               style: TextStyle(
-                fontSize: 15,
+                fontSize: 19,
                 height: 1.5,
                 color: AppColors.letterColor,
               ),
@@ -30,13 +30,9 @@ class ResultsPrompt extends StatelessWidget {
               style: const TextStyle(
                   fontWeight: FontWeight.w800,
                   height: 0.9,
-                  fontSize: 47,
+                  fontSize: 90,
                   color: AppColors.letterColor),
-            ),
-            const SizedBox(
-              height: 25,
-            ),
-            const Placeholder()
+            )
           ]),
     );
   }

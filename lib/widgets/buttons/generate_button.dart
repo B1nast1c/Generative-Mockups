@@ -1,22 +1,24 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:interfaces/common/colors.dart';
 import 'package:interfaces/views/loader/loading_view.dart';
 
 class GenerateButton extends StatelessWidget {
   final String title;
-  const GenerateButton({super.key, required this.title});
+  final String label;
+  const GenerateButton({super.key, required this.title, required this.label});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      key: const Key('btnGenerate'),
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => LoadingView(
             signalFunction: () {
-              log("Señal enviada desde la página de carga.");
+              log("Carga de las imágenes generadas");
             },
+            label: label,
           ),
         ));
       },

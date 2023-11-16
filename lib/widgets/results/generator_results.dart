@@ -1,29 +1,31 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:interfaces/common/colors.dart';
 import 'package:interfaces/widgets/buttons/download_button.dart';
 import 'package:interfaces/widgets/buttons/share_button.dart';
+import 'package:interfaces/common/image_model.dart';
 
 class GeneratorResults extends StatelessWidget {
-  const GeneratorResults({super.key});
+  final List<ImageModel> items;
+  const GeneratorResults({super.key, required this.items});
 
   @override
   Widget build(BuildContext context) {
-    return const Expanded(
+    return Expanded(
       child: Padding(
-          padding: EdgeInsets.only(top: 90, bottom: 50, right: 10),
+          padding: const EdgeInsets.only(top: 90, bottom: 85, right: 10),
           child: Row(
             children: <Widget>[
               Expanded(
                   child: ResultsElement(
-                elementId: 1,
+                elementId: 0,
+                items: items,
               )),
-              SizedBox(
+              const SizedBox(
                 width: 50,
               ),
-              Expanded(
-                  child: ResultsElement(
-                elementId: 3,
-              ))
             ],
           )),
     );
@@ -32,25 +34,27 @@ class GeneratorResults extends StatelessWidget {
 
 class ResultsElement extends StatelessWidget {
   final int elementId;
-  const ResultsElement({super.key, required this.elementId});
+  final List<ImageModel> items;
+  const ResultsElement(
+      {super.key, required this.elementId, required this.items});
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: <Widget>[
+    return Row(children: <Widget>[
       Expanded(
           child: GestureDetector(
               onTap: () {
-                showInfo(context, 'Titulo 1', elementId);
+                showInfo(context, elementId, items);
               },
               child: const MouseRegion(
                   cursor: SystemMouseCursors.click, child: Placeholder()))),
       const SizedBox(
-        height: 50,
+        width: 70,
       ),
       Expanded(
         child: GestureDetector(
             onTap: () {
-              showInfo(context, 'Titulo 1', elementId + 1);
+              showInfo(context, elementId + 1, items);
             },
             child: const MouseRegion(
                 cursor: SystemMouseCursors.click, child: Placeholder())),
@@ -59,7 +63,12 @@ class ResultsElement extends StatelessWidget {
   }
 }
 
-showInfo(context, title, id) {
+showInfo(context, id, items) {
+  ImageModel item = items[id];
+  id = id + 1;
+  String base64String = item.image;
+  List<int> imageBytes = base64Decode(base64String);
+
   return showDialog(
       context: context,
       builder: (context) {
@@ -71,8 +80,8 @@ showInfo(context, title, id) {
                   borderRadius: BorderRadiusDirectional.circular(10),
                   color: AppColors.normalWhite),
               padding: const EdgeInsets.all(15),
-              width: MediaQuery.of(context).size.width * 0.85,
-              height: MediaQuery.of(context).size.height * 0.85,
+              width: MediaQuery.of(context).size.width * 0.5,
+              height: MediaQuery.of(context).size.height * 0.75,
               child: Padding(
                 padding: const EdgeInsets.only(
                     left: 50, right: 50, bottom: 40, top: 60),
@@ -84,7 +93,10 @@ showInfo(context, title, id) {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Expanded(child: Placeholder()),
+                              Expanded(
+                                child: Image.memory(
+                                    Uint8List.fromList(imageBytes)),
+                              ),
                               const SizedBox(
                                 height: 40,
                               ),
@@ -107,7 +119,7 @@ showInfo(context, title, id) {
                             padding: const EdgeInsets.all(5),
                             child: Column(
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
+                                    MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   Container(
@@ -116,15 +128,37 @@ showInfo(context, title, id) {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: <Widget>[
-                                          Text('Layout code: $title',
-                                              style: const TextStyle(
+                                          const Text('Layout info: ',
+                                              style: TextStyle(
                                                   height: 2.5,
                                                   fontSize: 25,
                                                   fontWeight: FontWeight.bold,
                                                   color:
                                                       AppColors.letterColor)),
+                                          const SizedBox(
+                                            height: 15,
+                                          ),
                                           const Text(
-                                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+                                              'Within this sample, various elements can be observed that reflect the capability of a GAN in image generation.'),
+                                          const SizedBox(
+                                            height: 35,
+                                          ),
+                                          const Text('Layout data: ',
+                                              style: TextStyle(
+                                                  height: 2.5,
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.bold,
+                                                  color:
+                                                      AppColors.letterColor)),
+                                          Text('Name: ${item.name}',
+                                              style: const TextStyle(
+                                                  fontSize: 11)),
+                                          Text('Label: ${item.label}',
+                                              style: const TextStyle(
+                                                  fontSize: 11)),
+                                          Text('Resolution: ${item.resolution}',
+                                              style: const TextStyle(
+                                                  fontSize: 11)),
                                         ]),
                                   ),
                                   Container(

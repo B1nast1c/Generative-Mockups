@@ -3,6 +3,7 @@ import 'package:interfaces/common/colors.dart';
 import 'package:interfaces/widgets/buttons/main_button.dart';
 
 class MainDescription extends StatelessWidget {
+  static const startButton = Key("StartButton");
   const MainDescription({super.key});
 
   @override
@@ -27,12 +28,12 @@ class MainDescription extends StatelessWidget {
             Text(
               "Piensa en una frase mejor XD",
               style: TextStyle(
-                  fontSize: 15, height: 1.5, color: AppColors.letterColor),
+                  fontSize: 16, height: 1.5, color: AppColors.letterColor),
             ),
             SizedBox(
               height: 20,
             ),
-            MainButton(title: "LET'S START")
+            MainButton(key: startButton, title: "LET'S START")
           ]),
     );
   }

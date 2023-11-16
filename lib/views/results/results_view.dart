@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:interfaces/common/colors.dart';
+import 'package:interfaces/common/image_model.dart';
 import 'package:interfaces/views/main/left_view.dart';
 import 'package:interfaces/widgets/bar/navigation/navigation_bar.dart';
 import 'package:interfaces/widgets/information/results_prompt.dart';
@@ -7,7 +8,9 @@ import 'package:interfaces/widgets/results/generator_results.dart';
 
 class ResultsView extends StatelessWidget {
   final String viewTitle;
-  const ResultsView({super.key, required this.viewTitle});
+  final List<ImageModel> imagesList;
+  const ResultsView(
+      {super.key, required this.viewTitle, required this.imagesList});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +31,8 @@ class ResultsView extends StatelessWidget {
                     children: <Widget>[
                       ResultsPrompt(inputText: viewTitle),
                       const SizedBox(width: 100),
-                      const GeneratorResults()
+                      GeneratorResults(
+                          key: const Key("resExample"), items: imagesList)
                     ],
                   ),
                 ),

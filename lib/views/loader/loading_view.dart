@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:interfaces/common/api_service.dart';
 import 'package:interfaces/common/colors.dart';
+import 'package:interfaces/common/image_model.dart';
 import 'package:interfaces/views/main/center_view.dart';
 import 'package:interfaces/views/results/results_view.dart';
 
 class LoadingView extends StatefulWidget {
   final Function signalFunction;
-  const LoadingView({super.key, required this.signalFunction});
+  final String label;
+  const LoadingView(
+      {super.key, required this.signalFunction, required this.label});
 
   @override
   State<LoadingView> createState() => _LoadingViewState();
@@ -14,6 +18,23 @@ class LoadingView extends StatefulWidget {
 class _LoadingViewState extends State<LoadingView> {
   String loadText = 'Generating Layouts';
   bool redirectView = false;
+  Future<List<ImageModel>>? imageModel;
+  late List<ImageModel> imagesList;
+
+  void generateImages(String label) async {
+    imageModel = ApiService().generateImages(
+        label); // No es necesario convertirlo a Future<List<String>>
+    imageModel?.then((list) {
+      if (list.isNotEmpty) {
+        List<ImageModel> myList = list;
+        if (mounted) {
+          setState(() {
+            imagesList = myList;
+          });
+        }
+      }
+    });
+  }
 
   void loadingText() {
     const duration = Duration(seconds: 1);
@@ -39,52 +60,50 @@ class _LoadingViewState extends State<LoadingView> {
   void initState() {
     super.initState();
     loadingText();
-    Future.delayed(const Duration(seconds: 3), () {
-      try {
-        widget.signalFunction();
-        setState(() {
-          redirectView = true;
-          Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (context) => const ResultsView(
-                    viewTitle:
-                        'Modificar', //Pasado por la API (Elemento que se ha generado)
-                  )));
-        });
-      } catch (e) {
-        // Manejo de excepciones: muestra un mensaje de error en caso de problemas
-        setState(() {
-          loadText = 'Error: ${e.toString()}';
-        });
-      }
-    });
+    generateImages(widget.label);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.normalWhite,
-      body: CenterView(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.max,
-        children: <Widget>[
-          Image.asset(
-            'assets/loader.gif',
-            width: 225,
-            height: 225,
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Text(
-            loadText,
-            style: const TextStyle(
-                fontSize: 14,
-                color: AppColors.letterColor,
-                fontWeight: FontWeight.w700),
-          )
-        ],
-      )),
-    );
+        backgroundColor: AppColors.normalWhite,
+        body: CenterView(
+            child: FutureBuilder<List<ImageModel>>(
+                future: imageModel,
+                builder: (context, snapshot) {
+                  Future.delayed(const Duration(seconds: 3), () {
+                    widget.signalFunction();
+                  });
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.max,
+                      children: <Widget>[
+                        Image.asset(
+                          'assets/loader.gif',
+                          width: 225,
+                          height: 225,
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Text(
+                          loadText,
+                          style: const TextStyle(
+                              fontSize: 14,
+                              color: AppColors.letterColor,
+                              fontWeight: FontWeight.w700),
+                        )
+                      ],
+                    );
+                  } else if (snapshot.hasError) {
+                    return Text('Error: ${snapshot.error}');
+                  } else {
+                    return ResultsView(
+                      viewTitle: widget.label,
+                      imagesList: imagesList,
+                    ); //Pasado por la API (Elemento que se ha generado)
+                  }
+                })));
   }
 }

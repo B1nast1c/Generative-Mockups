@@ -5,7 +5,8 @@ import 'package:interfaces/common/api_service.dart';
 import 'package:interfaces/common/colors.dart';
 
 class GeneratorBar extends StatefulWidget {
-  const GeneratorBar({super.key});
+  final Function(String) callback;
+  const GeneratorBar({super.key, required this.callback});
 
   @override
   State<GeneratorBar> createState() => GeneratorBarState();
@@ -33,14 +34,17 @@ class GeneratorBarState extends State<GeneratorBar> {
     labelModel?.then((list) {
       if (list.isNotEmpty) {
         List<String> myList = list;
-        setState(() {
-          labelList = myList;
-        });
-        setState(() {
-          item =
-              "${labelList.first[0].toUpperCase()}${labelList.first.substring(1).toLowerCase()}";
-        });
-      } else {}
+        if (mounted) {
+          setState(() {
+            labelList = myList;
+          });
+          setState(() {
+            item =
+                "${labelList.first[0].toUpperCase()}${labelList.first.substring(1).toLowerCase()}";
+          });
+          widget.callback(item);
+        }
+      }
     });
   }
 
@@ -52,9 +56,9 @@ class GeneratorBarState extends State<GeneratorBar> {
         future: labelModel,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const CircularProgressIndicator();
+            return const Text("Loading data...");
           } else if (snapshot.hasError) {
-            return Text('Error: ${snapshot.error}');
+            return const Text('An error has ocurred');
           } else {
             return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -78,7 +82,7 @@ class GeneratorBarState extends State<GeneratorBar> {
                             child: Text(
                               "${e[0].toUpperCase()}${e.substring(1).toLowerCase()}",
                               style: const TextStyle(
-                                  fontSize: 16.5,
+                                  fontSize: 18,
                                   color: AppColors.letterColor,
                                   fontWeight: FontWeight.w100,
                                   letterSpacing: 1),
@@ -88,7 +92,7 @@ class GeneratorBarState extends State<GeneratorBar> {
                       )
                       .toList(),
                   hint: const Text(
-                    "Please choose a subject",
+                    "Please choose a topic",
                     style: TextStyle(
                       color: AppColors.letterColor,
                       fontSize: 12,
@@ -99,6 +103,7 @@ class GeneratorBarState extends State<GeneratorBar> {
                     setState(() {
                       item = value!;
                     });
+                    widget.callback(item); //Actualiza el valor del item
                   },
                 ));
           }
